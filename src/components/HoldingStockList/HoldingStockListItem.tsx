@@ -9,9 +9,7 @@ interface IHoldingListItem {
 
 const HoldingStockListItem = ({holdingItem}: IHoldingListItem) => {
   return (
-    <TouchableOpacity
-      style={styles.container}
-      onPress={() => console.log(holdingItem)}>
+    <View style={styles.container}>
       <View style={styles.symbolContainer}>
         <Text style={[styles.text, {fontWeight: 'bold'}]}>
           {holdingItem.symbol}
@@ -37,7 +35,7 @@ const HoldingStockListItem = ({holdingItem}: IHoldingListItem) => {
           </Text>
         </View>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 
