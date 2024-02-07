@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {IStockSummaryInfo} from '../../utils/constant';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 interface IBottomsheetProps {
   stockSummaryInfo: IStockSummaryInfo;
@@ -11,11 +12,12 @@ const Bottomsheet = ({stockSummaryInfo}: IBottomsheetProps) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => setIsDetailsshow(!isDetailsShow)}>
-        {isDetailsShow ? (
-          <Text style={styles.uparrow}>&#8964;</Text>
-        ) : (
-          <Text style={styles.uparrow}>&#8963;</Text>
-        )}
+        <Icon
+          name={isDetailsShow ? 'caretdown' : 'caretup'}
+          size={15}
+          color="#800080"
+          style={styles.uparrow}
+        />
       </TouchableOpacity>
       {isDetailsShow && (
         <>
@@ -55,9 +57,11 @@ const Bottomsheet = ({stockSummaryInfo}: IBottomsheetProps) => {
       )}
       <View
         style={[styles.symbolContainer, {marginTop: isDetailsShow ? 25 : 0}]}>
-        <Text style={[styles.text, {fontWeight: 'bold'}]}>Profit & Loss</Text>
+        <Text style={[styles.text, {fontWeight: 'bold', color: '#800080'}]}>
+          Profit & Loss
+        </Text>
         <View style={styles.symbolContainer}>
-          <Text style={styles.text}>
+          <Text style={[styles.text, {color: '#800080'}]}>
             ₹&nbsp;{stockSummaryInfo.totalPL.toFixed(2)}
           </Text>
         </View>
@@ -73,8 +77,6 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   uparrow: {
-    color: '#800080',
-    fontSize: 20,
     alignSelf: 'center',
   },
   symbolContainer: {
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#000000',
-    fontSize: 18,
+    fontSize: 15,
   },
 });
 
